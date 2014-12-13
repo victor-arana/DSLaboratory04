@@ -70,9 +70,15 @@ public class DList1 {
    */
   public void insertFront(int i) {
     DListNode1 node = new DListNode1(i);
-    node.next = head;
-    head = node;
-    head.next.prev = head;
+    if(size == 0){
+    	head = node;
+    	tail = head;
+    } else{
+    	node.next = head;
+        head = node;
+        head.next.prev = head;
+    }
+    size++;
   }
 
   /**
@@ -80,7 +86,16 @@ public class DList1 {
    *  list is empty, do nothing.
    */
   public void removeFront() {
-    // Your solution here.
+    if(size!=0){
+    	if(size==1){
+    		head = null;
+    		tail = head;    		
+    	}else{
+    		head.next.prev = null;
+    		head = head.next;    		
+    	}
+    	size--;
+    }
   }
 
   /**
